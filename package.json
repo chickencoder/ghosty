@@ -7,9 +7,15 @@
     "start": "next start"
   },
   "dependencies": {
+    "@supabase/supabase-js": "^1.0.7",
+    "@tailwindcss/forms": "^0.2.1",
+    "aws-sdk": "^2.799.0",
+    "classnames": "^2.2.6",
+    "isomorphic-unfetch": "^3.1.0",
     "next": "latest",
     "react": "^16.13.1",
-    "react-dom": "^16.13.1"
+    "react-dom": "^16.13.1",
+    "uuid": "^8.3.1"
   },
   "devDependencies": {
     "autoprefixer": "10.0.2",

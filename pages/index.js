@@ -1,14 +1,35 @@
-import Nav from '../components/nav'
+import Link from 'next/link'
 
-export default function IndexPage() {
+export default function Index() {
   return (
-    <div>
-      <Nav />
-      <div className="py-20">
-        <h1 className="text-5xl text-center text-gray-700 dark:text-gray-100">
-          Next.js + Tailwind CSS 2.0
-        </h1>
-      </div>
+    <div className="bg-white min-h-screen flex flex-col justify-between">
+      <header className="text-center py-20">
+        <h1 className="text-7xl">👻</h1>
+      </header>
+      <nav>
+        <ul>
+          <li className="text-center">
+            <Link href="/login">
+              <a
+                href="#"
+                className="block p-6 bg-purple-500 text-3xl text-white"
+              >
+                Login
+              </a>
+            </Link>
+          </li>
+          <li className="text-center">
+            <Link href="/signup">
+              <a
+                href="#"
+                className="block p-6 bg-green-500 text-3xl text-white"
+              >
+                Sign Up
+              </a>
+            </Link>
+          </li>
+        </ul>
+      </nav>
     </div>
   )
 }

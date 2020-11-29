@@ -3,13 +3,13 @@ module.exports = {
   darkMode: 'media', // 'media' or 'class'
   theme: {
     extend: {
-      colors: {
-        'accent-1': '#333',
+      fontFamily: {
+        sans: ['Nunito', 'system-ui', 'sans-serif'],
       },
     },
   },
   variants: {
     extend: {},
   },
-  plugins: [],
+  plugins: [require('@tailwindcss/forms')],
 }
