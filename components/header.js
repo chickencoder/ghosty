@@ -5,7 +5,7 @@ export default function Nav() {
     <header className="px-4 py-3 bg-green-400 text-white">
       <nav className="flex items-center justify-between">
         <Camera />
-        <h1 className="text-2xl">Snapchat</h1>
+        <h1 className="text-2xl">Ghosty</h1>
         <button>
           <svg
             xmlns="http://www.w3.org/2000/svg"

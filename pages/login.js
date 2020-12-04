@@ -1,7 +1,7 @@
 import { getForm } from '../lib/form'
 import { useState } from 'react'
 import { useRouter } from 'next/router'
-import { useClient } from '../hooks/supabase'
+import { useClient } from '../lib/supabase'
 
 export default function Login() {
   const client = useClient()
@@ -24,7 +24,7 @@ export default function Login() {
         if (error) {
           setError(error.message)
         } else {
-          router.push('/snaps')
+          router.push('/')
         }
       })
   }

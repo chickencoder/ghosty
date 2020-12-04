@@ -19,8 +19,7 @@ export default function SignUp() {
       },
     })
       .then((data) => data.json())
-      .then((data) => {
-        const { error } = data
+      .then(({ error }) => {
         if (error) {
           setError(error)
         }

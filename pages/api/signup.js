@@ -1,12 +1,10 @@
-const { createClient } = require('@supabase/supabase-js')
+import { createClient } from '@supabase/supabase-js'
 const { SERVICE_KEY, SUPABASE_URL } = process.env
 
 const client = createClient(SUPABASE_URL, SERVICE_KEY)
 
 export default async function (req, res) {
   const { email, password, username } = req.body
-
-  console.log(req.body)
 
   if (!email || !password || !username) {
     return res.json({
@@ -26,8 +24,8 @@ export default async function (req, res) {
   }
 
   let { error: insertError } = await client
-    .from('account')
-    .insert([{ user_id: user.id, username }])
+    .from('users')
+    .insert([{ id: user.id, username }])
 
   if (insertError) {
     return res.status(400).json({
