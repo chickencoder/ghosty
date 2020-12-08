@@ -1,11 +1,10 @@
-import { useClient } from '../../lib/supabase'
+import client from '../../lib/supabase'
 import { useState, useEffect } from 'react'
 import { getForm } from '../../lib/form'
 import { useRouter } from 'next/router'
 
 export default function Send() {
   const router = useRouter()
-  const client = useClient()
   const [friends, setFriends] = useState(null)
   const [error, setError] = useState(null)
 
@@ -43,7 +42,7 @@ export default function Send() {
 
     await client.from('messages').insert(messages)
 
-    await router.push('/messages')
+    await router.push('/feed')
   }
 
   return (
