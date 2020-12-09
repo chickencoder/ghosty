@@ -10,7 +10,6 @@ class MyDocument extends Document {
     return (
       <Html>
         <Head>
-          <title>Ghosty</title>
           <meta charset="utf-8" />
           <link rel="manifest" href="/manifest.json" />
           <link rel="apple-touch-icon" href="apple-icon-180.png" />
