@@ -32,7 +32,7 @@ function Message({ message }) {
 
   return (
     <Link href={`/message/${identifier}`}>
-      <a className="w-full flex items-center space-x-4 px-4 py-3">
+      <a className="w-full flex items-center space-x-4 px-4 py-3 focus:bg-gray-200">
         <div className="flex-shrink-0">
           {type === 'sent' ? (
             <SentIcon opened={opened} />

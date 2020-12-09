@@ -2,6 +2,7 @@ import { getForm } from '../lib/form'
 import { useState } from 'react'
 import { useRouter } from 'next/router'
 import client from '../lib/supabase'
+import FullScreen from 'react-div-100vh'
 
 export default function Login() {
   const [error, setError] = useState(null)
@@ -28,7 +29,7 @@ export default function Login() {
   }
 
   return (
-    <>
+    <FullScreen>
       <header className="text-center py-20">
         <h1 className="text-4xl font-bold">Login</h1>
       </header>
@@ -46,6 +47,10 @@ export default function Login() {
                 className="mt-0 block w-full px-0.5 border-0 border-b-2 border-gray-200 focus:ring-0 focus:border-green-400"
                 placeholder=""
                 required={true}
+                autocomplete="off"
+                autocorrect="off"
+                autocapitalize="off"
+                spellcheck="false"
               ></input>
             </label>
             <label className="block">
@@ -56,14 +61,18 @@ export default function Login() {
                 className="mt-0 block w-full px-0.5 border-0 border-b-2 border-gray-200 focus:ring-0 focus:border-green-400"
                 placeholder=""
                 required={true}
+                autocomplete="off"
+                autocorrect="off"
+                autocapitalize="off"
+                spellcheck="false"
               ></input>
             </label>
-            <button className="fixed bottom-0 inset-x-0 w-full block bg-green-500 hover:bg-green-400 text-white text-2xl p-4">
+            <button className="fixed pb-8 bottom-0 inset-x-0 w-full block bg-green-500 hover:bg-green-400 text-white text-2xl p-4">
               Log In
             </button>
           </div>
         </form>
       </main>
-    </>
+    </FullScreen>
   )
 }

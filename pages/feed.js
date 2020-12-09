@@ -19,6 +19,9 @@ export default function IndexPage() {
   return (
     <div className="min-h-screen">
       <Header />
+      <div className="text-center h-16 flex items-center justify-center">
+        <span role="img">👻</span>
+      </div>
       {error && <Error message={error.message} />}
       {data && <Messages messages={data} />}
     </div>

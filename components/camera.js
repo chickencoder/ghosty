@@ -62,7 +62,7 @@ export default function Camera() {
         type="file"
         ref={fileRef}
         onChange={sendPhoto}
-        accept="image/*"
+        accept="image/jpeg;capture=camera"
         className="hidden"
       />
       <button onClick={() => fileRef.current.click()}>
