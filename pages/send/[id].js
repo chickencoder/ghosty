@@ -2,6 +2,7 @@ import client from '../../lib/supabase'
 import { useState, useEffect } from 'react'
 import { getForm } from '../../lib/form'
 import { useRouter } from 'next/router'
+import Error from '../../components/error'
 
 export default function Send() {
   const router = useRouter()
@@ -40,7 +41,11 @@ export default function Send() {
       identifier: id,
     }))
 
-    await client.from('messages').insert(messages)
+    try {
+      await client.from('messages').insert(messages)
+    } catch (error) {
+      setError(error)
+    }
 
     await router.push('/feed')
   }
@@ -50,6 +55,7 @@ export default function Send() {
       <header className="text-center bg-purple-400 text-white p-4">
         <h1 className="text-2xl">Send to...</h1>
       </header>
+      {error && <Error message={error} />}
       <form onSubmit={send}>
         {friends && (
           <ul className="divide-y">

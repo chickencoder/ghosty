@@ -1,11 +1,11 @@
+import Link from 'next/link'
 import Camera from './camera'
+import { useState } from 'react'
 
-export default function Nav() {
+function Settings() {
   return (
-    <header className="fixed top-0 inset-x-0 h-16 px-4 py-3 bg-green-400 text-white">
-      <nav className="flex items-center justify-between">
-        <Camera />
-        <h1 className="text-2xl">Ghosty</h1>
+    <Link href="/settings">
+      <a>
         <button>
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -29,7 +29,38 @@ export default function Nav() {
             />
           </svg>
         </button>
-      </nav>
-    </header>
+      </a>
+    </Link>
+  )
+}
+
+function Overlay() {
+  return (
+    <div className="z-50 absolute inset-0 bg-white flex items-center justify-center">
+      <span
+        role="img"
+        aria-label="Ghost Emoji"
+        className="animate-pulse text-5xl"
+      >
+        👻
+      </span>
+    </div>
+  )
+}
+
+export default function Header() {
+  const [loading, setLoading] = useState(false)
+
+  return (
+    <>
+      {loading && <Overlay />}
+      <header className="fixed top-0 inset-x-0 h-16 px-4 bg-green-400 text-white">
+        <nav className="h-full flex items-center justify-between">
+          <Camera setLoading={setLoading} />
+          <h1 className="text-2xl">Ghosty</h1>
+          <Settings />
+        </nav>
+      </header>
+    </>
   )
 }

@@ -27,11 +27,12 @@ function CameraIcon() {
   )
 }
 
-export default function Camera() {
+export default function Camera({ setLoading }) {
   const fileRef = useRef(null)
   const router = useRouter()
 
   async function sendPhoto(event) {
+    setLoading(true)
     const file = event.target.files[0]
     const res = await fetch(`/api/upload?type=${encodeURIComponent(file.type)}`)
 
@@ -62,7 +63,7 @@ export default function Camera() {
         type="file"
         ref={fileRef}
         onChange={sendPhoto}
-        accept="image/jpeg;capture=camera"
+        accept="image/jpeg"
         className="hidden"
       />
       <button onClick={() => fileRef.current.click()}>

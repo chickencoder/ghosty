@@ -10,7 +10,7 @@ class MyDocument extends Document {
     return (
       <Html>
         <Head>
-          <meta charset="utf-8" />
+          <meta charSet="utf-8" />
           <link rel="manifest" href="/manifest.json" />
           <link rel="apple-touch-icon" href="apple-icon-180.png" />
           <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -18,7 +18,6 @@ class MyDocument extends Document {
             name="apple-mobile-web-app-status-bar-style"
             content="black-translucent"
           />
-          <meta name="viewport" content="initial-scale=1, viewport-fit=cover" />
           <link
             rel="apple-touch-startup-image"
             href="apple-splash-2048-2732.jpg"
