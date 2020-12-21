@@ -2,6 +2,7 @@ import client from '../../lib/supabase'
 import { useState, useEffect } from 'react'
 import { getForm } from '../../lib/form'
 import { useRouter } from 'next/router'
+import Spacer from '../../components/spacer'
 import Error from '../../components/error'
 
 export default function Send() {
@@ -52,32 +53,39 @@ export default function Send() {
 
   return (
     <>
-      <header className="text-center bg-purple-400 text-white p-4">
+      <header className="fixed top-0 inset-x-0 h-16 standalone:h-24 standalone:pt-safe-top px-4 bg-purple-400 text-white flex items-center justify-center">
         <h1 className="text-2xl">Send to...</h1>
       </header>
-      {error && <Error message={error} />}
-      <form onSubmit={send}>
-        {friends && (
-          <ul className="divide-y">
-            {friends.map(({ users }, index) => (
-              <li key={index}>
-                <label className="flex items-center justify-between space-x-2 p-4">
-                  <span className="text-xl font-bold">{users.username}</span>
-                  <input id={users.username} value={users.id} type="checkbox" />
-                </label>
-              </li>
-            ))}
-          </ul>
-        )}
-        <footer className="fixed bottom-0 inset-x-0">
-          <button
-            type="submit"
-            className="block p-4 w-full text-2xl bg-purple-400 text-white"
-          >
-            Send
-          </button>
-        </footer>
-      </form>
+      <Spacer />
+      <main>
+        {error && <Error message={error} />}
+        <form onSubmit={send}>
+          {friends && (
+            <ul className="divide-y">
+              {friends.map(({ users }, index) => (
+                <li key={index}>
+                  <label className="flex items-center justify-between space-x-2 p-4">
+                    <span className="text-xl font-bold">{users.username}</span>
+                    <input
+                      id={users.username}
+                      value={users.id}
+                      type="checkbox"
+                    />
+                  </label>
+                </li>
+              ))}
+            </ul>
+          )}
+          <footer className="fixed bottom-0 inset-x-0">
+            <button
+              type="submit"
+              className="block p-4 w-full text-2xl bg-purple-400 text-white"
+            >
+              Send
+            </button>
+          </footer>
+        </form>
+      </main>
     </>
   )
 }

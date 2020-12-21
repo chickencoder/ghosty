@@ -13,7 +13,7 @@ function sentOrReceieved({ from }) {
 
 function formatMessages({ data }) {
   return data
-    .map(({ sent_at, opened_at, ...message }) => ({
+    ?.map(({ sent_at, opened_at, ...message }) => ({
       time: format(new Date(sent_at)),
       opened: isOpened(opened_at),
       type: sentOrReceieved(message),

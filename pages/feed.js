@@ -2,6 +2,7 @@ import Header from '../components/header'
 import Messages from '../components/messages'
 import Viewer from '../components/viewer'
 import Error from '../components/error'
+import Spacer from '../components/spacer'
 import client from '../lib/supabase'
 import { useEffect, useState } from 'react'
 import { useRouter } from 'next/router'
@@ -35,24 +36,12 @@ export default function IndexPage() {
   }, [message])
 
   return (
-<<<<<<< HEAD
-    <>
-      <div className="min-h-screen mt-16">
-        <Header />
-        {error && <Error message={error.message} />}
-        {data && <Messages messages={data} />}
-      </div>
-      {message && <Viewer id={message} />}
-    </>
-=======
     <div className="min-h-screen">
       <Header />
-      <div className="text-center h-16 flex items-center justify-center">
-        <span role="img">👻</span>
-      </div>
+      <Spacer />
       {error && <Error message={error.message} />}
       {data && <Messages messages={data} />}
+      {message && <Viewer id={message} />}
     </div>
->>>>>>> b2890cf3b4100e1a73b11815d61c2aba79ee4a76
   )
 }

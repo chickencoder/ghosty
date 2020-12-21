@@ -11,14 +11,21 @@ export default function Input({
     purple: 'focus:border-purple-400',
   }
   const classes = classnames(
-    'mt-0 block mx-auto px-0.5 border-0 border-b-2 border-gray-200 text-gray-800 border-dashed focus:ring-0 text-center text-2xl',
+    'mt-0 block mx-auto px-0.5 border-0 border-b-2 border-gray-200 text-gray-800 border-dashed focus:ring-0 text-center text-xl',
     variants[variant],
     className
   )
   return (
     <label className="block text-center">
       <span className="block text-lg text-gray-500 mb-1">{label}</span>
-      <input {...props} className={classes} />
+      <input
+        className={classes}
+        autoComplete="off"
+        autoCorrect="off"
+        autocapitalize="off"
+        spellCheck="false"
+        {...props}
+      />
     </label>
   )
 }

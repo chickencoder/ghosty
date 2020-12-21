@@ -54,7 +54,7 @@ export default function Header() {
   return (
     <>
       {loading && <Overlay />}
-      <header className="fixed top-0 inset-x-0 h-16 px-4 bg-green-400 text-white">
+      <header className="fixed top-0 inset-x-0 h-16 standalone:h-24 standalone:pt-safe-top px-4 bg-green-400 text-white">
         <nav className="h-full flex items-center justify-between">
           <Camera setLoading={setLoading} />
           <h1 className="text-2xl">Ghosty</h1>
