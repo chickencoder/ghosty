@@ -1,1 +1,3 @@
-Secret project
+👻
+
+Source code for [ghosty.chat](https://ghosty.chat)

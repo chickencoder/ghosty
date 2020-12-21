@@ -35,6 +35,7 @@ export default function IndexPage() {
   }, [message])
 
   return (
+<<<<<<< HEAD
     <>
       <div className="min-h-screen mt-16">
         <Header />
@@ -43,5 +44,15 @@ export default function IndexPage() {
       </div>
       {message && <Viewer id={message} />}
     </>
+=======
+    <div className="min-h-screen">
+      <Header />
+      <div className="text-center h-16 flex items-center justify-center">
+        <span role="img">👻</span>
+      </div>
+      {error && <Error message={error.message} />}
+      {data && <Messages messages={data} />}
+    </div>
+>>>>>>> b2890cf3b4100e1a73b11815d61c2aba79ee4a76
   )
 }

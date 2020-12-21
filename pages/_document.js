@@ -17,7 +17,6 @@ class MyDocument extends Document {
             name="apple-mobile-web-app-status-bar-style"
             content="black-translucent"
           />
-          <meta name="viewport" content="initial-scale=1, viewport-fit=cover" />
           <link
             rel="apple-touch-startup-image"
             href="apple-splash-2048-2732.jpg"
