@@ -6,10 +6,16 @@ module.exports = {
       fontFamily: {
         sans: ['Nunito', 'system-ui', 'sans-serif'],
       },
+      keyframes: {
+        loader: {
+          '0%': { width: '0' },
+          '100%': { width: '100%' },
+        },
+      },
+      animation: {
+        loader: 'loader 10s linear infinite',
+      },
     },
-  },
-  variants: {
-    extend: {},
   },
   plugins: [require('@tailwindcss/forms')],
 }

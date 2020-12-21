@@ -1,4 +1,6 @@
-import Link from 'next/link'
+import { useRouter } from 'next/router'
+import Repeatable from 'react-repeatable'
+import client from '../lib/supabase'
 import cn from 'classnames'
 
 function SentIcon({ opened = false }) {
@@ -25,29 +27,52 @@ function SentIcon({ opened = false }) {
 }
 
 function Message({ message }) {
+  const router = useRouter()
   const { identifier, opened, type, to, from, time } = message
+  const user = client.auth.user()
+
   const boxClass = cn('block border-2 border-red-500 w-6 h-6 rounded', {
     'bg-red-500': !opened,
   })
 
+  function openMessage() {
+    if (!opened && to.id === user.id) {
+      router.push(`/feed?message=${identifier}`, undefined, { shallow: true })
+    }
+  }
+
+  function closeMessage() {
+    router.push('/feed')
+  }
+
   return (
-    <Link href={`/message/${identifier}`}>
-      <a className="w-full flex items-center space-x-4 px-4 py-3">
-        <div className="flex-shrink-0">
-          {type === 'sent' ? (
-            <SentIcon opened={opened} />
-          ) : (
-            <span className={boxClass}></span>
-          )}
-        </div>
-        <div>
-          <span className="block text-left text-lg leading-none">
-            {type === 'received' ? from.username : to.username}
-          </span>
-          <span className="text-gray-400 text-sm">{time}</span>
-        </div>
-      </a>
-    </Link>
+    <Repeatable
+      tag="button"
+      type="button"
+      onPress={(e) => {
+        e.preventDefault()
+        openMessage()
+      }}
+      onRelease={(e) => {
+        e.preventDefault()
+        closeMessage()
+      }}
+      className="w-full flex items-center space-x-4 px-4 py-3"
+    >
+      <div className="flex-shrink-0">
+        {type === 'sent' && user.id !== to.id ? (
+          <SentIcon opened={opened} />
+        ) : (
+          <span className={boxClass}></span>
+        )}
+      </div>
+      <div>
+        <span className="block text-left text-lg leading-none">
+          {type === 'received' ? from.username : to.username}
+        </span>
+        <span className="text-gray-400 text-sm">{time}</span>
+      </div>
+    </Repeatable>
   )
 }
 

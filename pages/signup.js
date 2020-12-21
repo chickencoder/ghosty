@@ -1,5 +1,7 @@
 import { useState } from 'react'
 import { getForm } from '../lib/form'
+import Input from '../components/input'
+import LargeButton from '../components/large-button'
 
 export default function SignUp() {
   const [error, setError] = useState(null)
@@ -39,40 +41,31 @@ export default function SignUp() {
           {error && (
             <div className="text-red-500 text-center mb-4">{error}</div>
           )}
-          <div className="space-y-8">
-            <label className="block">
-              <span>Username</span>
-              <input
-                required={true}
-                id="username"
-                type="text"
-                className="mt-0 block w-full px-0.5 border-0 border-b-2 border-gray-200 focus:ring-0 focus:border-purple-400"
-                placeholder=""
-              ></input>
-            </label>
-            <label className="block">
-              <span>Email</span>
-              <input
-                required={true}
-                id="email"
-                type="text"
-                className="mt-0 block w-full px-0.5 border-0 border-b-2 border-gray-200 focus:ring-0 focus:border-purple-400"
-                placeholder=""
-              ></input>
-            </label>
-            <label className="block">
-              <span>Password</span>
-              <input
-                required={true}
-                id="password"
-                type="password"
-                className="mt-0 block w-full px-0.5 border-0 border-b-2 border-gray-200 focus:ring-0 focus:border-purple-400"
-                placeholder=""
-              ></input>
-            </label>
-            <button className="fixed bottom-0 inset-x-0 w-full block bg-purple-500 hover:bg-purple-400 text-white text-2xl p-4">
+          <div className="space-y-16">
+            <Input
+              id="username"
+              type="text"
+              label="Username"
+              variant="purple"
+              required={true}
+            />
+            <Input
+              id="email"
+              type="email"
+              label="Email Address"
+              variant="purple"
+              required={true}
+            />
+            <Input
+              type="password"
+              id="password"
+              label="Password"
+              variant="purple"
+              required={true}
+            />
+            <LargeButton variant="purple" className="fixed bottom-0 inset-x-0">
               Sign Up
-            </button>
+            </LargeButton>
           </div>
         </form>
       </main>

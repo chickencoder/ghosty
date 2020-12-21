@@ -1,10 +1,13 @@
 import Link from 'next/link'
+import Div100vh from 'react-div-100vh'
 
 export default function Index() {
   return (
-    <div className="bg-white min-h-screen flex flex-col justify-between">
-      <header className="text-center py-20">
-        <h1 className="text-7xl">👻</h1>
+    <Div100vh className="bg-yellow-300 flex h-full flex-col justify-between ">
+      <header className="text-center standalone:pt-safe-top py-20 ">
+        <h1 className="text-7xl" aria-label="Ghosty">
+          👻
+        </h1>
       </header>
       <nav>
         <ul>
@@ -30,6 +33,6 @@ export default function Index() {
           </li>
         </ul>
       </nav>
-    </div>
+    </Div100vh>
   )
 }

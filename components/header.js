@@ -2,7 +2,7 @@ import Camera from './camera'
 
 export default function Nav() {
   return (
-    <header className="px-4 py-3 bg-green-400 text-white">
+    <header className="fixed top-0 inset-x-0 pt-safe-top px-4 py-3 bg-green-400 text-white">
       <nav className="flex items-center justify-between">
         <Camera />
         <h1 className="text-2xl">Ghosty</h1>

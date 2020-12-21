@@ -8,6 +8,16 @@
 @tailwind components;
 /* Stop purging. */
 
+* {
+  -webkit-user-select: none;
+  -webkit-touch-callout: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+body {
+  @apply bg-yellow-300;
+}
+
 /* Start purging... */
 @tailwind utilities;
 /* Stop purging. */

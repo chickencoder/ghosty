@@ -23,11 +23,13 @@ function formatMessages({ data }) {
 }
 
 export function useMessages() {
-  return useSWR('messages', () => {
-    return client
-      .from('messages')
-      .select(
-        `
+  return useSWR(
+    'messages',
+    () => {
+      return client
+        .from('messages')
+        .select(
+          `
         identifier,
         sent_at,
         opened_at,
@@ -40,9 +42,13 @@ export function useMessages() {
           username
         )
       `
-      )
-      .range(0, 25)
-      .order('sent_at')
-      .then(formatMessages)
-  })
+        )
+        .range(0, 25)
+        .order('sent_at')
+        .then(formatMessages)
+    },
+    {
+      refreshInterval: 2000,
+    }
+  )
 }
