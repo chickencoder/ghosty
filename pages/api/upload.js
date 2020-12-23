@@ -22,7 +22,7 @@ export default async function (req, res) {
       'Content-Type': type,
     },
     Expires: 60,
-    Conditions: [['content-length-range', 0, 1048576]],
+    Conditions: [['content-length-range', 0, 3145728 * 3]],
   })
 
   res.status(200).json({ id, snap })

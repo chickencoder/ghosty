@@ -10,6 +10,7 @@
     "@sentry/browser": "^5.29.2",
     "@sentry/node": "^5.29.2",
     "@supabase/supabase-js": "^1.0.7",
+    "@tailwindcss/aspect-ratio": "^0.2.0",
     "@tailwindcss/forms": "^0.2.1",
     "aws-sdk": "^2.799.0",
     "classnames": "^2.2.6",

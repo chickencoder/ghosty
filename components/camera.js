@@ -45,30 +45,31 @@ export default function Camera({ setLoading }) {
       formData.append(key, value)
     })
 
-    try {
-      await fetch(url, {
-        method: 'POST',
-        body: formData,
+    fetch(url, {
+      method: 'POST',
+      body: formData,
+    })
+      .then(() => {
+        router.push(`/send/${fields.key}`)
       })
-    } catch (error) {
-      alert(error.message)
-    }
-
-    await router.push(`/send/${fields.key}`)
+      .catch((error) => {
+        alert(error)
+      })
   }
 
   return (
-    <div>
+    <>
       <input
         type="file"
         ref={fileRef}
         onChange={sendPhoto}
-        accept="image/jpeg"
+        accept="image/*"
         className="hidden"
+        capture
       />
       <button onClick={() => fileRef.current.click()}>
         <CameraIcon />
       </button>
-    </div>
+    </>
   )
 }

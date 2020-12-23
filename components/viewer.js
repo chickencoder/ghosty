@@ -1,5 +1,7 @@
 import { useEffect } from 'react'
 import client from '../lib/supabase'
+import Div100vh from 'react-div-100vh'
+import Image from 'next/image'
 
 export default function Viewer({ id }) {
   const url = `https://snapchat.ams3.digitaloceanspaces.com/${id}`
@@ -17,9 +19,21 @@ export default function Viewer({ id }) {
 
   return (
     <>
-      <div className="animate-loader absolute z-10 top-0 left-0 right-0 float-right bg-white h-1" />
-      <div className="absolute inset-0 bg-black flex items-center justify-center">
-        <img src={url} className="w-full" />
+      <div className="z-10 fixed inset-0">
+        <Div100vh className="bg-black">
+          <div className="animate-loader absolute z-10 top-0 left-0 right-0 float-right bg-white h-1 standalone:mt-safe-top" />
+          <div className="h-full flex justify-center align-center">
+            <Image
+              src={url}
+              layout="fill"
+              objectFit="cover"
+              lazy="eager"
+              quality={40}
+              priority={true}
+            />
+          </div>
+        </Div100vh>
+        <div className="fixed bottom-0 inset-x-0 bg-red h-64" />
       </div>
     </>
   )

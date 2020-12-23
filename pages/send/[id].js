@@ -1,35 +1,17 @@
 import client from '../../lib/supabase'
-import { useState, useEffect } from 'react'
 import { getForm } from '../../lib/form'
 import { useRouter } from 'next/router'
 import Spacer from '../../components/spacer'
 import Error from '../../components/error'
+import { useFriends } from '../../hooks/friends'
 
 export default function Send() {
+  const { data: friends, error } = useFriends()
   const router = useRouter()
-  const [friends, setFriends] = useState(null)
-  const [error, setError] = useState(null)
 
   const {
     query: { id },
   } = router
-
-  useEffect(() => {
-    async function getFriends() {
-      const { data: friends, error } = await client.from('friends').select(`
-          users:friend_id (
-            username,
-            id
-          )
-        `)
-      if (error) {
-        setError(error)
-      } else {
-        setFriends(friends)
-      }
-    }
-    getFriends()
-  }, [])
 
   async function send(event) {
     event.preventDefault()
@@ -45,7 +27,7 @@ export default function Send() {
     try {
       await client.from('messages').insert(messages)
     } catch (error) {
-      setError(error)
+      setError(error.message)
     }
 
     await router.push('/feed')
@@ -62,13 +44,13 @@ export default function Send() {
         <form onSubmit={send}>
           {friends && (
             <ul className="divide-y">
-              {friends.map(({ users }, index) => (
+              {friends.map(({ friend }, index) => (
                 <li key={index}>
                   <label className="flex items-center justify-between space-x-2 p-4">
-                    <span className="text-xl font-bold">{users.username}</span>
+                    <span className="text-xl font-bold">{friend.username}</span>
                     <input
-                      id={users.username}
-                      value={users.id}
+                      id={friend.username}
+                      value={friend.id}
                       type="checkbox"
                     />
                   </label>

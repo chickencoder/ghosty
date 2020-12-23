@@ -26,6 +26,14 @@ export default function IndexPage() {
   }, [router.query.message])
 
   useEffect(() => {
+    if (message) {
+      document.body.classList.add('fixed')
+    } else {
+      document.body.classList.remove('fixed')
+    }
+  }, [message])
+
+  useEffect(() => {
     let timer
     if (message) {
       timer = setTimeout(() => {

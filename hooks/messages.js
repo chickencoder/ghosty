@@ -12,14 +12,12 @@ function sentOrReceieved({ from }) {
 }
 
 function formatMessages({ data }) {
-  return data
-    ?.map(({ sent_at, opened_at, ...message }) => ({
-      time: format(new Date(sent_at)),
-      opened: isOpened(opened_at),
-      type: sentOrReceieved(message),
-      ...message,
-    }))
-    .reverse()
+  return data?.map(({ sent_at, opened_at, ...message }) => ({
+    time: format(new Date(sent_at)),
+    opened: isOpened(opened_at),
+    type: sentOrReceieved(message),
+    ...message,
+  }))
 }
 
 export function useMessages() {
@@ -44,7 +42,9 @@ export function useMessages() {
       `
         )
         .range(0, 25)
-        .order('sent_at')
+        .order('sent_at', {
+          ascending: false,
+        })
         .then(formatMessages)
     },
     {

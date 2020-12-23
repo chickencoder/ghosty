@@ -37,7 +37,10 @@ function Message({ message }) {
 
   function openMessage() {
     if (!opened && to.id === user.id) {
-      router.push(`/feed?message=${identifier}`, undefined, { shallow: true })
+      router.push(`/feed?message=${identifier}`, undefined, {
+        shallow: true,
+        scroll: false,
+      })
     }
   }
 
@@ -70,7 +73,11 @@ function Message({ message }) {
         <span className="block text-left text-lg leading-none">
           {type === 'received' ? from.username : to.username}
         </span>
-        <span className="text-gray-400 text-sm">{time}</span>
+        <span className="text-gray-400 text-sm">
+          {(type === 'received' || user.id === to.id) && !opened
+            ? 'Tap and hold to view'
+            : time}
+        </span>
       </div>
     </Repeatable>
   )
