@@ -95,7 +95,7 @@ export default function Header() {
           <div className="col-span-2 inline-flex justify-center">
             <h1 className="text-2xl">Ghosty</h1>
           </div>
-          <div class="col-span-1 inline-flex justify-end">
+          <div className="col-span-1 inline-flex justify-end">
             <span className="flex items-center space-x-3">
               <Friends />
               <Settings />

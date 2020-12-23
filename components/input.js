@@ -22,7 +22,7 @@ export default function Input({
         className={classes}
         autoComplete="off"
         autoCorrect="off"
-        autocapitalize="off"
+        autoCapitalize="off"
         spellCheck="false"
         {...props}
       />

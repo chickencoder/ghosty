@@ -44,12 +44,17 @@ export default function IndexPage() {
   }, [message])
 
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen bg-gray-200">
       <Header />
       <Spacer />
       {error && <Error message={error.message} />}
       {data && <Messages messages={data} />}
       {message && <Viewer id={message} />}
+      {!data && (
+        <div className="bg-white text-gray-500 p-4 text-center">
+          Time to send some pics! 👻
+        </div>
+      )}
     </div>
   )
 }

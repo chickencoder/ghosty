@@ -69,7 +69,7 @@ function Message({ message }) {
           <span className={boxClass}></span>
         )}
       </div>
-      <div>
+      <div className="text-left">
         <span className="block text-left text-lg leading-none">
           {type === 'received' ? from.username : to.username}
         </span>

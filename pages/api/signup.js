@@ -27,6 +27,13 @@ export default async function (req, res) {
     .from('users')
     .insert([{ id: user.id, username }])
 
+  const teamGhosty = 'a5c1a8f4-a994-4572-9c25-930799c06e0c'
+  await client.from('friends').insert({
+    id: `${user.id}_${teamGhosty}`,
+    user_id: user.id,
+    friend_id: teamGhosty,
+  })
+
   if (insertError) {
     return res.status(400).json({
       error: insertError.message,
