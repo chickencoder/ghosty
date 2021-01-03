@@ -7,10 +7,12 @@ export default function Viewer({ id }) {
   const url = `https://snapchat.ams3.digitaloceanspaces.com/${id}`
 
   async function recordView() {
+    const { id: userId } = client.auth.user()
     await client
       .from('messages')
       .update({ opened_at: new Date() })
       .eq('identifier', id)
+      .eq('user_to', userId)
   }
 
   useEffect(() => {
