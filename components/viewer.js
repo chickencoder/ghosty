@@ -27,11 +27,10 @@ export default function Viewer({ id }) {
           <div className="h-full flex justify-center align-center">
             <Image
               src={url}
-              layout="fill"
-              objectFit="cover"
-              lazy="eager"
               quality={40}
               priority={true}
+              width={600}
+              height={800}
             />
           </div>
         </Div100vh>
