@@ -16,7 +16,7 @@ export default function Viewer({ id }) {
   }
 
   useEffect(() => {
-    // recordView()
+    recordView()
   }, [])
 
   return (
@@ -25,13 +25,13 @@ export default function Viewer({ id }) {
         <Div100vh className="bg-black">
           <div className="animate-loader absolute z-10 top-0 left-0 right-0 float-right bg-white h-1 standalone:mt-safe-top" />
           <div className="h-full flex items-center justify-center align-center">
-            <Image
-              src={url}
-              quality={40}
-              priority={true}
-              width={300}
-              height={400}
-              className="w-full"
+            <div
+              className="w-full h-full"
+              style={{
+                backgroundImage: `url(${url})`,
+                backgroundSize: 'cover',
+                backgroundPosition: '50% 50%',
+              }}
             />
           </div>
         </Div100vh>
